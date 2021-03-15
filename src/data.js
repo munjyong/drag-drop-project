@@ -1,4 +1,4 @@
-export const data = {
+const data = {
   tasks: {
     'task-1': { id: 'task-1', content: 'Take out the garbage' },
     'task-2': { id: 'task-2', content: 'Watch my favorite show' },
@@ -16,17 +16,4 @@ export const data = {
   columnOrder: ['column-1'],
 };
 
-export const result = {
-  draggableId: 'task-1',
-  type: 'TYPE',
-  reason: 'DROP',
-  source: {
-    droppableId: 'column-1',
-    index: 0,
-  },
-  destination: {
-    droppableId: 'column-1',
-    index: 1,
-  }
-}
-
+export default data;
