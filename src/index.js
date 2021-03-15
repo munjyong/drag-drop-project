@@ -1,13 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import data from './data';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { data, result } from './data'
 import Column from './Column'
+import '@atlaskit/css-reset';
+import { DragDropContext } from 'react-beautiful-dnd'
 
 const App = () => {
   const state = data
 
+  const onDragEnd = () => {
+
+  }
+
   return (
-    <>
+    <DragDropContext
+      onDragEnd={onDragEnd}
+    >
       {
         state.columnOrder.map((columnId) => {
           const column = state.columns[columnId]
@@ -16,7 +24,7 @@ const App = () => {
           return <Column key={column.id} column={column} tasks={tasks} />
         })
       }
-    </>    
+    </DragDropContext>    
   )
 }
 

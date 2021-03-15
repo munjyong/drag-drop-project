@@ -11,6 +11,7 @@ export const TaskContainer = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
   padding: 8px;
+  background-color: #e1e1e1;
 `
 
 export const Title = styled.h3`
