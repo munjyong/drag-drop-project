@@ -25,9 +25,9 @@ const App = () => {
     }
 
     // Set the starting column id of draggable 
-    const start = state.columns[source.droppableId]
+    const start = state.droppables[source.droppableId]
     // Set the starting column id of draggable 
-    const finish = state.columns[destination.droppableId]
+    const finish = state.droppables[destination.droppableId]
 
     // Re-ordering within the same column
     if (start === finish) {
@@ -47,8 +47,8 @@ const App = () => {
       // New state object with re-ordered tasks in each column
       const newState = {
         ...state,
-        columns: {
-          ...state.columns,
+        droppables: {
+          ...state.droppables,
           [newColumn.id]: newColumn
         }
       }
@@ -78,8 +78,8 @@ const App = () => {
 
     const newState = {
       ...state,
-      columns: {
-        ...state.columns,
+      droppables: {
+        ...state.droppables,
         [newStart.id]: newStart,
         [newFinish.id]: newFinish
       }
@@ -94,8 +94,8 @@ const App = () => {
     >
       <ColumnContainer>
         {
-          state.columnOrder.map((columnId) => {
-            const column = state.columns[columnId]
+          state.droppablesOrder.map((columnId) => {
+            const column = state.droppables[columnId]
             const tasks = column.taskIds.map(taskId => state.tasks[taskId])
 
             return <Column key={column.id} column={column} tasks={tasks} />

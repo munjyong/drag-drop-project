@@ -5,25 +5,20 @@ const data = {
     'task-3': { id: 'task-3', content: 'Charge my phone' },
     'task-4': { id: 'task-4', content: 'Cook dinner' },
   },
-  columns: {
-    'column-1': {
-      id: 'column-1',
-      title: 'To do',
+  droppables: {
+    'droppable-blocks': {
+      id: 'droppable-blocks',
+      title: 'Blocks',
       taskIds: ['task-1', 'task-2', 'task-3', 'task-4'],
     },
-    'column-2': {
-      id: 'column-2',
-      title: 'In progress',
-      taskIds: [],
-    },
-    'column-3': {
-      id: 'column-3',
-      title: 'Complete',
+    'droppable-timeline': {
+      id: 'droppable-timeline',
+      title: 'Timeline',
       taskIds: [],
     },
   },
   // Facilitate reordering of the columns
-  columnOrder: ['column-1', 'column-2', 'column-3'],
+  droppablesOrder: ['droppable-blocks', 'droppable-timeline'],
 };
 
 export default data;
