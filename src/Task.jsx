@@ -9,11 +9,12 @@ const Task = ({ index, task }) => {
       index={index}
     >  
       {
-        (provided) => (
+        (provided, snapshot) => (
           <TaskContainer 
             {...provided.draggableProps} 
             {...provided.dragHandleProps}
             ref={provided.innerRef}
+            isDragging={snapshot.isDragging}
           >
             { task.content }
           </TaskContainer>
