@@ -88,19 +88,29 @@ const App = () => {
     setState(newState)
   }
 
+  // Delcaring droppable ids and the tasks within each droppable
+
+  const droppableBlocks = state.droppables['droppable-blocks']
+  const droppableBlocksTasks = droppableBlocks.taskIds.map(taskId => state.tasks[taskId])
+
+  const droppableTimeline = state.droppables['droppable-timeline']
+  const droppableTimelineTasks = droppableTimeline.taskIds.map(taskId => state.tasks[taskId])
+
   return (
     <DragDropContext
       onDragEnd={onDragEnd}
     >
       <ColumnContainer>
-        {
-          state.droppablesOrder.map((columnId) => {
-            const column = state.droppables[columnId]
-            const tasks = column.taskIds.map(taskId => state.tasks[taskId])
-
-            return <Column key={column.id} column={column} tasks={tasks} />
-          })
-        }
+        <Column 
+          key={'droppable-blocks'} 
+          column={droppableBlocks} 
+          tasks={droppableBlocksTasks} 
+        />
+        <Column 
+          key={'droppable-timeline'} 
+          column={droppableTimeline} 
+          tasks={droppableTimelineTasks} 
+        />
       </ColumnContainer>
     </DragDropContext>    
   )
