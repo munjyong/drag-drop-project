@@ -21,4 +21,18 @@ const data = {
   droppablesOrder: ['droppable-blocks', 'droppable-timeline'],
 };
 
+// const data = {
+//   'blocks': {
+//     id: 'blocks',
+//     title: "Blocks",
+//     items: [],
+//     itemOrder: []
+//   },
+//   'timeline': {
+//     id: 'timeline',
+//     title: "Timeline",
+//     items: []
+//   }
+// }
+
 export default data;

@@ -8,6 +8,12 @@ import {
 import Task from './Task'
 
 const Column = ({ key, column, tasks }) => {
+
+  console.log("key, column, tasks",
+  key,
+  column,
+  tasks)
+
   return (
     <Columns>
       <Title>
