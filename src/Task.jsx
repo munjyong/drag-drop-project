@@ -2,7 +2,7 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd'
 import { TaskContainer } from './styles'
 
-const Task = ({ index, task }) => {
+const Task = ({ index, task, deleteTask, column }) => {
   return (
     <Draggable
       draggableId={task.id}
@@ -17,6 +17,11 @@ const Task = ({ index, task }) => {
             isDragging={snapshot.isDragging}
           >
             { task.content }
+            <button
+              onClick={() => deleteTask(task.id, column.id, index)}
+            >
+              Delete
+            </button>
           </TaskContainer>
         )
       }

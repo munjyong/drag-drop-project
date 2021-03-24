@@ -7,13 +7,7 @@ import {
 } from './styles'
 import Task from './Task'
 
-const Column = ({ key, column, tasks }) => {
-
-  console.log("key, column, tasks",
-  key,
-  column,
-  tasks)
-
+const Column = ({ key, column, tasks, deleteTask }) => {
   return (
     <Columns>
       <Title>
@@ -27,10 +21,18 @@ const Column = ({ key, column, tasks }) => {
               {...provided.droppableProps}
               isDraggingOver={snapshot.isDraggingOver}
             >
-              { 
+              { tasks !== [] ?
                 tasks.map((task, index) => (
-                  <Task key={task.id} task={task} index={index} />
+                  <Task 
+                    key={task.id} 
+                    task={task} 
+                    index={index}
+                    column={column} 
+                    deleteTask={deleteTask}
+                  />
                 )) 
+                :
+                null
               }
 
               {/* Placeholder is used to increase the available space when an item is being dragged. This solves visual bugs such as items overflowing when an item is in the middle of a drag. */}

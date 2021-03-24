@@ -15,6 +15,7 @@ const App = () => {
     const { source, destination, draggableId } = result;
 
     // Positional index checks to see if the user has dropped a draggable onto a new destination
+
     if (
       !destination ||
       (destination.droppableId === source.droppableId &&
@@ -29,21 +30,19 @@ const App = () => {
     const finish = state.droppables[destination.droppableId];
 
     // Re-ordering within the same column
+
     if (start === finish) {
       // Create shallow copy of taskIds in a column
       const newTaskIds = Array.from(start.taskIds);
-
       // Remove task from taskIds array and the column
       newTaskIds.splice(source.index, 1);
       // Replace task back into taskIds array and the column at new destination index
       newTaskIds.splice(destination.index, 0, draggableId);
-
       // New column object with re-ordered taskIds array
       const newColumn = {
         ...start,
         taskIds: newTaskIds
       };
-
       // New state object with re-ordered tasks in each column
       const newState = {
         ...state,
@@ -52,7 +51,6 @@ const App = () => {
           [newColumn.id]: newColumn
         }
       };
-
       // Update state
       setState(newState);
       return;
@@ -88,7 +86,9 @@ const App = () => {
     setState(newState);
   };
 
-  const addItem = () => {
+  // Adding a new block
+
+  const addTask = () => {
     const itemId = shortid.generate();
 
     setState((oldState) => {
@@ -119,6 +119,47 @@ const App = () => {
     setBlockName("");
   };
 
+  const convertArrayToObject = (array, key) => {
+    const initialValue = {};
+    return array.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item[key]]: item,
+      };
+    }, initialValue);
+  };
+
+  // Delete a block
+
+  const deleteTask = (itemId, columnId, index) => {
+    setState(oldState => {
+      // Create copy of all current tasks
+      const tasksCopy = Object.values(state.tasks)
+      // Create copy of taskIds array of the relevant column
+      const taskIdsArrayCopy = Array.from(state.droppables[columnId].taskIds)
+      // Remove selected task in copy
+      tasksCopy.splice(index, 1)
+      // Remove selected task id from taskIds array in copy
+      taskIdsArrayCopy.splice(index, 1)
+      // Convert array tasks back into object to be passed into state
+      const convertedTasks = convertArrayToObject(tasksCopy, 'id')
+      // Update state with new updated data
+      return {
+        ...oldState,
+        tasks: {
+          ...convertedTasks
+        },
+        droppables: {
+          ...oldState.droppables,
+          [columnId]: {
+            ...oldState.droppables[columnId],
+            taskIds: taskIdsArrayCopy
+          }
+        }
+      }
+    })
+  }
+
   // Delcaring droppable ids and the tasks within each droppable
 
   const droppableBlocks = state.droppables["droppable-blocks"];
@@ -138,17 +179,19 @@ const App = () => {
         value={blockName}
         onChange={(e) => setBlockName(e.target.value)}
       ></input>
-      <button onClick={blockName ? addItem : null}>Add item</button>
+      <button onClick={blockName ? addTask : null}>Add item</button>
       <ColumnContainer>
         <Column
           key={"droppable-blocks"}
           column={droppableBlocks}
           tasks={droppableBlocksTasks}
+          deleteTask={deleteTask}
         />
         <Column
           key={"droppable-timeline"}
           column={droppableTimeline}
           tasks={droppableTimelineTasks}
+          deleteTask={deleteTask}
         />
       </ColumnContainer>
     </DragDropContext>
