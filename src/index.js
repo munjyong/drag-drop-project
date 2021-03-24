@@ -11,6 +11,18 @@ const App = () => {
   const [state, setState] = useState(data);
   const [blockName, setBlockName] = useState("");
 
+  // Delcaring droppable ids and the tasks within each droppable
+
+  const droppableBlocks = state.droppables["droppable-blocks"];
+  const droppableBlocksTasks = droppableBlocks.taskIds.map(
+    (taskId) => state.tasks[taskId]
+  );
+
+  const droppableTimeline = state.droppables["droppable-timeline"];
+  const droppableTimelineTasks = droppableTimeline.taskIds.map(
+    (taskId) => state.tasks[taskId]
+  );
+
   const onDragEnd = (result) => {
     const { source, destination, draggableId } = result;
 
@@ -160,18 +172,6 @@ const App = () => {
     })
   }
 
-  // Delcaring droppable ids and the tasks within each droppable
-
-  const droppableBlocks = state.droppables["droppable-blocks"];
-  const droppableBlocksTasks = droppableBlocks.taskIds.map(
-    (taskId) => state.tasks[taskId]
-  );
-
-  const droppableTimeline = state.droppables["droppable-timeline"];
-  const droppableTimelineTasks = droppableTimeline.taskIds.map(
-    (taskId) => state.tasks[taskId]
-  );
-
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <input
@@ -179,16 +179,14 @@ const App = () => {
         value={blockName}
         onChange={(e) => setBlockName(e.target.value)}
       ></input>
-      <button onClick={blockName ? addTask : null}>Add item</button>
+      <button onClick={blockName ? addTask : null}>Add block</button>
       <ColumnContainer>
         <Column
-          key={"droppable-blocks"}
           column={droppableBlocks}
           tasks={droppableBlocksTasks}
           deleteTask={deleteTask}
         />
         <Column
-          key={"droppable-timeline"}
           column={droppableTimeline}
           tasks={droppableTimelineTasks}
           deleteTask={deleteTask}
