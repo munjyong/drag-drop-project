@@ -23,12 +23,12 @@ export const TimelineWrapper = styled.div`
 export const MainWrapper = styled.div`
   grid-area: main;
   background-color: #E1E1E1;
-  height: 100%;
+  margin: 6rem 4rem 2rem 4rem;
+  border-radius: 20px;
 `
 
 export const Columns = styled.div`
   margin: 8px;
-  border: 1px solid lightgrey;
   border-radius: 2px;
   text-align: center;
 
@@ -63,4 +63,5 @@ export const TaskList = styled.div`
 export const Timeline = styled.div`
   background-color: ${props => (props.isDraggingOver ? '#A1A1A1' : 'white')};
   display: flex;
+  height: 200px;
 `
