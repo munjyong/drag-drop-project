@@ -4,7 +4,12 @@ import data from "./data";
 import Column from "./Column";
 import "@atlaskit/css-reset";
 import { DragDropContext } from "react-beautiful-dnd";
-import { ColumnContainer } from "./styles";
+import { 
+  Container,
+  BlocksWrapper,
+  TimelineWrapper,
+  MainWrapper
+} from "./styles";
 import shortid from "shortid";
 
 const App = () => {
@@ -151,6 +156,7 @@ const App = () => {
       const taskIdsArrayCopy = Array.from(state.droppables[columnId].taskIds)
       // Remove selected task in copy
       tasksCopy.splice(index, 1)
+      tasksCopy.filter(task => task.length)
       // Remove selected task id from taskIds array in copy
       taskIdsArrayCopy.splice(index, 1)
       // Convert array tasks back into object to be passed into state
@@ -159,6 +165,7 @@ const App = () => {
       return {
         ...oldState,
         tasks: {
+          ...oldState.tasks,
           ...convertedTasks
         },
         droppables: {
@@ -174,24 +181,33 @@ const App = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <input
-        type="text"
-        value={blockName}
-        onChange={(e) => setBlockName(e.target.value)}
-      ></input>
-      <button onClick={blockName ? addTask : null}>Add block</button>
-      <ColumnContainer>
-        <Column
-          column={droppableBlocks}
-          tasks={droppableBlocksTasks}
-          deleteTask={deleteTask}
-        />
-        <Column
-          column={droppableTimeline}
-          tasks={droppableTimelineTasks}
-          deleteTask={deleteTask}
-        />
-      </ColumnContainer>
+      <Container>
+        <MainWrapper>
+
+        </MainWrapper>
+        <BlocksWrapper>
+          <input
+            type="text"
+            value={blockName}
+            onChange={(e) => setBlockName(e.target.value)}
+          ></input>
+          <button onClick={blockName ? addTask : null}>
+            Add block
+          </button>
+          <Column
+            column={droppableBlocks}
+            tasks={droppableBlocksTasks}
+            deleteTask={deleteTask}
+          />
+        </BlocksWrapper>
+        <TimelineWrapper>
+          <Column
+            column={droppableTimeline}
+            tasks={droppableTimelineTasks}
+            deleteTask={deleteTask}
+          />
+        </TimelineWrapper>
+      </Container>
     </DragDropContext>
   );
 };
