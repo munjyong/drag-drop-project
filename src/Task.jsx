@@ -17,6 +17,7 @@ const Task = ({ index, task, deleteTask, column }) => {
             isDragging={snapshot.isDragging}
           >
             { task.content }
+            <br/>
             <button
               onClick={() => deleteTask(task.id, column.id, index)}
             >

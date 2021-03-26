@@ -14,6 +14,34 @@ export const BlocksWrapper = styled.div`
   grid-area: blocks;
   display: flex;
   flex-direction: column;
+
+  input,
+  button {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  input {
+    background-color: #e1e1e1;
+    border: none;
+    margin: 1rem auto;
+    width: 60%
+    font-size: 14px;
+    
+  }
+
+  button {
+    background-color: #e1e1e1;
+    border: none;
+    padding: 7px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    
+
+    &:hover {
+      background-color: #b1b1b1;
+    }
+  }
 `
 
 export const TimelineWrapper = styled.div`
@@ -37,14 +65,40 @@ export const Columns = styled.div`
 `
 
 export const TaskContainer = styled.div`
-  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  margin: 1rem;
+  padding: 10px;
+
+  min-height: 150px;
+  min-width: 250px;
+
   border: 1px solid lightgrey;
   border-radius: 2px;
-  padding: 8px;
   border: none;
+  border-radius: 20px;
+
   transition: background-color 0.2s ease;
-  background-color: ${props => (props.isDragging ? '#5C6A89' : '#E1E1E1')};
-  color: ${props => (props.isDragging ? 'white' : 'black')}
+  background-color: ${props => (props.isDragging ? '#00DCAD' : '#FFF')};
+  color: ${props => (props.isDragging ? 'white' : 'black')};
+
+  button {
+    background-color: #e1e1e1;
+    border: none;
+    padding: 7px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    
+
+    &:hover {
+      background-color: #b1b1b1;
+    }
+  }
+
+  font-size: 1.5rem;
 `
 
 export const Title = styled.h3`
@@ -52,16 +106,18 @@ export const Title = styled.h3`
 `
 
 export const TaskList = styled.div`
-  // padding: 8px;
-  min-height: 100%;
   transition: background-color 0.2s ease;
-  background-color: ${props => (props.isDraggingOver ? '#A1A1A1' : 'white')}
-  // flex-grow: 1;
-  // min-height: 150px;
+  background-color: ${props => (props.isDraggingOver ? '#A1A1A1' : '#E1E1E1')};
+  height: 1000px;
+  overflow: auto;
+  padding: 0 8rem;
+  border-radius: 20px;
 `
 
 export const Timeline = styled.div`
-  background-color: ${props => (props.isDraggingOver ? '#A1A1A1' : 'white')};
+  background-color: ${props => (props.isDraggingOver ? '#A1A1A1' : '#E1E1E1')};
   display: flex;
   height: 200px;
+  border-radius: 20px;
+  margin: 0 2rem;
 `
