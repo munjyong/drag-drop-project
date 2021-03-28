@@ -27,7 +27,6 @@ export const BlocksWrapper = styled.div`
     margin: 1rem auto;
     width: 60%
     font-size: 14px;
-    
   }
 
   button {
@@ -46,6 +45,9 @@ export const BlocksWrapper = styled.div`
 
 export const TimelineWrapper = styled.div`
   grid-area: timeline;
+  width: 80%;
+  overflow: auto;
+  margin: 0 auto;
 `
 
 export const MainWrapper = styled.div`
@@ -56,9 +58,13 @@ export const MainWrapper = styled.div`
 `
 
 export const Columns = styled.div`
-  margin: 8px;
+  margin: 8px auto;
   border-radius: 2px;
   text-align: center;
+  min-width: 350px;
+
+  overflow: auto;
+  width: 80%;
 
   display: flex;
   flex-direction: column;
@@ -70,11 +76,11 @@ export const TaskContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  margin: 1rem;
+  margin: 8px;
   padding: 10px;
 
-  min-height: 150px;
-  min-width: 250px;
+  min-height: 160px;
+  width: 250px;
 
   border: 1px solid lightgrey;
   border-radius: 2px;
@@ -110,14 +116,19 @@ export const TaskList = styled.div`
   background-color: ${props => (props.isDraggingOver ? '#A1A1A1' : '#E1E1E1')};
   height: 1000px;
   overflow: auto;
-  padding: 0 8rem;
   border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const Timeline = styled.div`
   background-color: ${props => (props.isDraggingOver ? '#A1A1A1' : '#E1E1E1')};
   display: flex;
   height: 200px;
+  width: fit-content;
+  min-width: 90%;
   border-radius: 20px;
   margin: 0 2rem;
 `
