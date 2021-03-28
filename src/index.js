@@ -189,6 +189,7 @@ const App = () => {
           <input
             type="text"
             value={blockName}
+            placeholder={"Enter name of new block"}
             onChange={(e) => setBlockName(e.target.value)}
           ></input>
           <button onClick={blockName ? addTask : null}>

@@ -24,8 +24,10 @@ export const BlocksWrapper = styled.div`
   input {
     background-color: #e1e1e1;
     border: none;
+    border-radius: 20px;
     margin: 1rem auto;
-    width: 60%
+    width: 80%;
+    height: 50px;
     font-size: 14px;
   }
 
