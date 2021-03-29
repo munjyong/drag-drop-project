@@ -206,6 +206,10 @@ const deleteTask = (itemId, columnId, index) => {
 
 There is no official support yet from cloning/toolbox like feature for draggables i.e. when you drag a block it should clone a new block for you and not move the original draggabke. But a workaround was proposed in an issues thread [here](https://github.com/atlassian/react-beautiful-dnd/issues/216#issuecomment-423708497).
 
+**Version with updated dependencies [here](https://github.com/atlassian/react-beautiful-dnd/issues/216#issuecomment-554320756).**
+
+**Simplified shopping bag example [here](https://github.com/atlassian/react-beautiful-dnd/issues/216#issuecomment-555003786).**
+
 ## Notes
 
 ### Multi-block selection

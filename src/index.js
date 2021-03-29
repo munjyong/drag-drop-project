@@ -28,6 +28,9 @@ const App = () => {
     (taskId) => state.tasks[taskId]
   );
 
+  console.log('droppableBlocks = ', droppableBlocks)
+  console.log('droppableBlocksTasks = ', droppableBlocksTasks)
+
   const onDragEnd = (result) => {
     const { source, destination, draggableId } = result;
 
